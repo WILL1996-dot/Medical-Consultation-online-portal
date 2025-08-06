@@ -11,8 +11,8 @@
     <div class="logo">StayHealthy <span class="icon">🧑‍⚕️</span></div>
     <nav>
       <ul class="nav-links">
-        <li><a href="gettingstarted.html">Home</a></li>
-        <li><a href="services.html">Appointments</a></li>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Appointments</a></li>
         <li><a href="#">Health Blog</a></li>
         <li><a href="#">Reviews</a></li>
       </ul>
@@ -23,27 +23,94 @@
     </div>
   </header>
 
-  <main class="login-container">
-    <div class="login-box">
-      <h2>Login</h2>
-      <p class="subtext">Are you a new member? <a href="#">Sign Up Here</a></p>
+  <div id="root"></div>
 
-      <form>
-        <label for="email">Email</label>
-        <input type="email" id="email" placeholder="Enter your email" required>
+  <!-- React + ReactDOM -->
+  <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+  <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
 
-        <label for="password">Password</label>
-        <div class="password-field">
-          <input type="password" id="password" placeholder="Enter your password" required>
-          <span class="toggle">&#128065;</span>
-        </div>
+  <!-- React App -->
+  <script type="text/babel">
+    const { useState } = React;
 
-        <button type="submit" class="btn-login">Login</button>
-        <button type="reset" class="btn-reset">Reset</button>
-      </form>
+    function LoginForm() {
+      const [email, setEmail] = useState('');
+      const [password, setPassword] = useState('');
+      const [showPassword, setShowPassword] = useState(false);
+      const [error, setError] = useState('');
+      const [success, setSuccess] = useState('');
 
-      <p class="forgot"><a href="#">Forgot Password?</a></p>
-    </div>
-  </main>
+      const handleLogin = (e) => {
+        e.preventDefault();
+
+        const savedUsers = JSON.parse(localStorage.getItem('registeredUsers')) || [];
+
+        const user = savedUsers.find(
+          (u) => u.email === email && u.password === password
+        );
+
+        if (user) {
+          setSuccess(`Welcome back, ${user.name}!`);
+          setError('');
+          sessionStorage.setItem('loggedInUser', JSON.stringify(user));
+        } else {
+          setError('Invalid email or password.');
+          setSuccess('');
+        }
+      };
+
+      const handleReset = () => {
+        setEmail('');
+        setPassword('');
+        setError('');
+        setSuccess('');
+      };
+
+      return (
+        <main className="login-container">
+          <div className="login-box">
+            <h2>Login</h2>
+            <p className="subtext">Are you a new member? <a href="signup.html">Sign Up Here</a></p>
+
+            <form onSubmit={handleLogin} onReset={handleReset}>
+              <label htmlFor="email">Email</label>
+              <input
+                type="email"
+                id="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                placeholder="Enter your email"
+                required
+              />
+
+              <label htmlFor="password">Password</label>
+              <div className="password-field">
+                <input
+                  type={showPassword ? 'text' : 'password'}
+                  id="password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  placeholder="Enter your password"
+                  required
+                />
+                <span className="toggle" onClick={() => setShowPassword(!showPassword)}>👁️</span>
+              </div>
+
+              {error && <p className="error">{error}</p>}
+              {success && <p className="success">{success}</p>}
+
+              <button type="submit" className="btn-login">Login</button>
+              <button type="reset" className="btn-reset">Reset</button>
+            </form>
+
+            <p className="forgot"><a href="#">Forgot Password?</a></p>
+          </div>
+        </main>
+      );
+    }
+
+    ReactDOM.createRoot(document.getElementById('root')).render(<LoginForm />);
+  </script>
 </body>
 </html>
