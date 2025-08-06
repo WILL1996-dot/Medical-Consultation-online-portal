@@ -136,7 +136,7 @@ input[type="password"] {
 /* Buttons */
 .btn-login {
   margin-top: 1.5rem;
-  background-color: #007bff;
+  background-color: green;
   color: white;
   padding: 0.75rem;
   border: none;
