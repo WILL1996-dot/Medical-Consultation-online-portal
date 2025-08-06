@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Login - StayHealthy</title>
+  <link rel="stylesheet" href="login.css" />
+</head>
+<body>
+  <header class="navbar">
+    <div class="logo">StayHealthy <span class="icon">🧑‍⚕️</span></div>
+    <nav>
+      <ul class="nav-links">
+        <li><a href="gettingstarted.html">Home</a></li>
+        <li><a href="services.html">Appointments</a></li>
+        <li><a href="#">Health Blog</a></li>
+        <li><a href="#">Reviews</a></li>
+      </ul>
+    </nav>
+    <div class="auth-buttons">
+      <a href="signup.html" class="btn-outline">Sign Up</a>
+      <a href="login.html" class="btn-outline">Login</a>
+    </div>
+  </header>
+
+  <main class="login-container">
+    <div class="login-box">
+      <h2>Login</h2>
+      <p class="subtext">Are you a new member? <a href="#">Sign Up Here</a></p>
+
+      <form>
+        <label for="email">Email</label>
+        <input type="email" id="email" placeholder="Enter your email" required>
+
+        <label for="password">Password</label>
+        <div class="password-field">
+          <input type="password" id="password" placeholder="Enter your password" required>
+          <span class="toggle">&#128065;</span>
+        </div>
+
+        <button type="submit" class="btn-login">Login</button>
+        <button type="reset" class="btn-reset">Reset</button>
+      </form>
+
+      <p class="forgot"><a href="#">Forgot Password?</a></p>
+    </div>
+  </main>
+</body>
+</html>

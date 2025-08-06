@@ -1,0 +1,160 @@
+/* Reset and Base */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+body {
+  background-color: #fff;
+  color: #333;
+}
+
+/* Navbar */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem 10%;
+  background-color: white;
+  box-shadow: 0 1px 10px rgba(0, 0, 0, 0.05);
+  flex-wrap: wrap;
+}
+
+.logo {
+  font-weight: bold;
+  font-size: 1.5rem;
+  flex: 1 1 100%;
+  margin-bottom: 1rem;
+}
+
+.logo .icon {
+  color: #007bff;
+  font-size: 1.3rem;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.nav-links li a {
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
+}
+
+.auth-buttons {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.btn-outline {
+  padding: 0.5rem 1rem;
+  border: 2px solid #007bff;
+  border-radius: 25px;
+  text-decoration: none;
+  color: #007bff;
+  transition: all 0.3s ease;
+}
+
+.btn-outline:hover {
+  background-color: #007bff;
+  color: white;
+}
+
+/* Tips Section */
+.tips {
+  padding: 4rem 10%;
+}
+
+.tips h2 {
+  font-size: 2rem;
+  text-align: center;
+  margin-bottom: 3rem;
+  font-weight: bold;
+}
+
+.tip-box {
+  background-color: #f5f7fb;
+  border-radius: 10px;
+  padding: 1.5rem 2rem;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.02);
+  transition: transform 0.3s ease;
+}
+
+.tip-box:hover {
+  transform: translateY(-3px);
+}
+
+.tip-box h3 {
+  font-size: 1.3rem;
+  margin-bottom: 0.5rem;
+  color: #111;
+}
+
+.tip-box p {
+  color: #555;
+  line-height: 1.6;
+  font-size: 1rem;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .navbar {
+    padding: 1.5rem 5%;
+  }
+
+  .tips {
+    padding: 3rem 5%;
+  }
+}
+
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .auth-buttons {
+    margin-top: 1rem;
+  }
+
+  .tips h2 {
+    font-size: 1.6rem;
+  }
+
+  .tip-box h3 {
+    font-size: 1.2rem;
+  }
+
+  .tip-box p {
+    font-size: 0.95rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .nav-links {
+    flex-direction: column;
+    gap: 0.8rem;
+  }
+
+  .auth-buttons {
+    flex-direction: column;
+    gap: 0.5rem;
+    width: 100%;
+  }
+
+  .tips h2 {
+    font-size: 1.4rem;
+  }
+
+  .tip-box {
+    padding: 1rem 1.5rem;
+  }
+}

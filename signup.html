@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sign Up - StayHealthy</title>
+  <link rel="stylesheet" href="signup.css" />
+</head>
+<body>
+  <header class="navbar">
+    <div class="logo">StayHealthy <span class="icon">🧑‍⚕️</span></div>
+    <nav>
+      <ul class="nav-links">
+        <li><a href="gettingstarted.html">Home</a></li>
+        <li><a href="services.html">Appointments</a></li>
+        <li><a href="#">Health Blog</a></li>
+        <li><a href="#">Reviews</a></li>
+      </ul>
+    </nav>
+    <div class="auth-buttons">
+      <a href="signup.html" class="btn-outline">Sign Up</a>
+      <a href="login.html" class="btn-outline">Login</a>
+    </div>
+  </header>
+
+  <main class="signup-container">
+    <div class="signup-box">
+      <h2>Sign Up</h2>
+      <p class="subtext">Already a member? <a href="#">Login</a></p>
+
+      <form>
+        <label for="role">Role</label>
+        <select id="role" required>
+          <option value="">Select role</option>
+          <option value="doctor">Doctor</option>
+          <option value="nurse">Nurse</option>
+          <option value="patient">Patient</option>
+        </select>
+
+        <label for="name">Name</label>
+        <input type="text" id="name" placeholder="Enter your name" required>
+
+        <label for="phone">Phone</label>
+        <input type="tel" id="phone" placeholder="Enter your phone number" required>
+
+        <label for="email">Email</label>
+        <input type="email" id="email" placeholder="Enter your email" required>
+
+        <label for="password">Password</label>
+        <div class="password-field">
+          <input type="password" id="password" placeholder="Enter your password" required>
+          <span class="toggle">&#128065;</span>
+        </div>
+
+        <button type="submit" class="btn-submit">Submit</button>
+        <button type="reset" class="btn-reset">Reset</button>
+      </form>
+    </div>
+  </main>
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>StayHealthy - Getting Started</title>
+  <link rel="stylesheet" href="gettingstarted.css" />
+  <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body>
+  <header class="navbar">
+    <div class="logo">StayHealthy <span class="icon">🧑‍⚕️</span></div>
+    <nav>
+      <ul class="nav-links">
+        <li><a href="gettingstarted.html">Home</a></li>
+        <li><a href="services.html">Appointments</a></li>
+        <li><a href="#">Health Blog</a></li>
+        <li><a href="#">Reviews</a></li>
+      </ul>
+    </nav>
+    <div class="auth-buttons">
+      <a href="signup.html" class="btn-outline">Sign Up</a>
+      <a href="login.html" class="btn-outline">Login</a>
+    </div>
+  </header>
+
+  <section class="hero">
+    <h1>
+      <span class="highlight-dark">Welcome to Good Will Online Portal for Medical Consultation</span><br /> Your Health
+      <span class="highlight-gradient"> is Our Responsibility</span>
+    </h1>
+    <p class="description">
+      "Embrace the art of self-care, for a healthy mind and body forge the foundation of a vibrant life. <br>
+      Wellness is not just a destination; it's a journey of mindful choices and daily transformations. Nurture your health with love, and watch it bloom into a beacon of joy and vitality."
+    </p>
+    <a href="#" class="btn-primary">Get Started</a>
+	
+	<div id="mydiv"></div>
+  </section>
+  
+   <script type="text/babel">
+      function Hello() {
+        return <h1>Hello World!</h1>;
+      }
+
+      const container = document.getElementById('mydiv');
+      const root = ReactDOM.createRoot(container);
+      root.render(<Hello />)
+    </script>
+
+</body>
+</html>

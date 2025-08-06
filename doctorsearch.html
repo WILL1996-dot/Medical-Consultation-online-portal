@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Find a Doctor - StayHealthy</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    body {
+      background-color: #fff;
+      color: #333;
+      padding: 2rem 1rem;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      background-color: #f8f8f8;
+      border-bottom: 1px solid #ddd;
+      flex-wrap: wrap;
+    }
+
+    .logo {
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+
+    .logo .icon {
+      color: #007bff;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+
+    nav ul li a {
+      text-decoration: none;
+      color: #333;
+      font-weight: 500;
+    }
+
+    .user-info {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      font-size: 0.95rem;
+    }
+
+    .btn-outline {
+      padding: 0.4rem 0.9rem;
+      border: 2px solid #007bff;
+      border-radius: 25px;
+      text-decoration: none;
+      color: #007bff;
+      transition: all 0.3s ease;
+    }
+
+    .btn-outline:hover {
+      background-color: #007bff;
+      color: white;
+    }
+
+    .container {
+      max-width: 600px;
+      margin: 4rem auto;
+      text-align: center;
+    }
+
+    h2 {
+      margin-bottom: 1.5rem;
+    }
+
+    .search-img {
+      width: 200px;
+      margin-bottom: 2rem;
+    }
+
+    .search-wrapper {
+      position: relative;
+      margin-top: 1rem;
+    }
+
+    input[type="text"] {
+      width: 100%;
+      padding: 12px;
+      font-size: 16px;
+      border: 2px solid #ccc;
+      border-radius: 5px;
+      outline: none;
+    }
+
+    ul#suggestions {
+      position: absolute;
+      width: 100%;
+      background: #fff;
+      border: 1px solid #ccc;
+      border-top: none;
+      max-height: 200px;
+      overflow-y: auto;
+      list-style: none;
+      z-index: 1000;
+      display: none;
+    }
+
+    ul#suggestions li {
+      padding: 10px;
+      border-bottom: 1px solid #eee;
+      cursor: pointer;
+    }
+
+    ul#suggestions li:hover {
+      background-color: #f0f0f0;
+    }
+
+    @media (max-width: 600px) {
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+      }
+
+      nav ul {
+        flex-direction: column;
+        gap: 0.8rem;
+      }
+
+      .container {
+        margin: 2rem auto;
+      }
+
+      .search-img {
+        width: 150px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Navbar -->
+  <header>
+    <div class="logo">StayHealthy <span class="icon">🧑‍⚕️</span></div>
+    <nav>
+      <ul>
+        <li><a href="gettinstarted.html">Home</a></li>
+        <li><a href="services.html">Appointments</a></li>
+        <li><a href="#">Health Blog</a></li>
+        <li><a href="#">Reviews</a></li>
+      </ul>
+    </nav>
+    <div class="user-info">
+      <span>Welcome, jasmine2023</span>
+      <a href="#" class="btn-outline">Logout</a>
+    </div>
+  </header>
+
+  <!-- Search Section -->
+  <div class="container">
+    <h2>Find a doctor at your own ease</h2>
+
+    <!-- Illustration Image -->
+    <img class="search-img" src="https://cdn-icons-png.flaticon.com/512/3767/3767096.png" alt="Search Doctor Icon" />
+
+    <div class="search-wrapper">
+      <input type="text" id="searchInput" placeholder="Search doctors by specialty..." />
+      <ul id="suggestions"></ul>
+    </div>
+  </div>
+
+  <!-- Autocomplete Script -->
+  <script>
+    const specialties = [
+      "Cardiologist",
+      "Dermatologist",
+      "General Practitioner",
+      "Neurologist",
+      "Pediatrician",
+      "Psychiatrist",
+      "Radiologist",
+      "Orthopedic Surgeon",
+      "Ophthalmologist",
+      "Dentist",
+      "ENT Specialist",
+      "Gastroenterologist",
+      "Oncologist"
+    ];
+
+    const input = document.getElementById("searchInput");
+    const suggestionList = document.getElementById("suggestions");
+
+    input.addEventListener("input", () => {
+      const query = input.value.toLowerCase();
+      suggestionList.innerHTML = "";
+
+      if (query === "") {
+        suggestionList.style.display = "none";
+        return;
+      }
+
+      const filtered = specialties.filter(s =>
+        s.toLowerCase().includes(query)
+      );
+
+      if (filtered.length === 0) {
+        suggestionList.style.display = "none";
+        return;
+      }
+
+      filtered.forEach(s => {
+        const li = document.createElement("li");
+        li.textContent = s;
+        li.onclick = () => {
+          input.value = s;
+          suggestionList.innerHTML = "";
+          suggestionList.style.display = "none";
+        };
+        suggestionList.appendChild(li);
+      });
+
+      suggestionList.style.display = "block";
+    });
+
+    document.addEventListener("click", e => {
+      if (!e.target.closest(".search-wrapper")) {
+        suggestionList.style.display = "none";
+      }
+    });
+  </script>
+</body>
+</html>
